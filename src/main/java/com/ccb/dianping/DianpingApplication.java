@@ -1,9 +1,13 @@
 package com.ccb.dianping;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.ccb.dianping"})
+@MapperScan(basePackages = "com.ccb.dianping.dal")
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class DianpingApplication {
 
     public static void main(String[] args) {
