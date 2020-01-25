@@ -5,7 +5,10 @@ import lombok.Data;
 public enum EnumCommonError {
 
     PARAM_NOT_MATCH(10001, "参数不正确"),
-    PATH_NOT_FOUND(10002, "找不到路径");
+    PATH_NOT_FOUND(10002, "找不到路径"),
+
+    //用户相关错误
+    USER_ALREAD_EXIST(20001, "该手机号已注册");
 
     private int code;
 

@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User register(User user) {
-        return null;
+    public void register(User user) {
+        userMapper.insert(user);
     }
 
     @Override

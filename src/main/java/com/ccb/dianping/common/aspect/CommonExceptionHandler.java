@@ -3,6 +3,7 @@ package com.ccb.dianping.common.aspect;
 import com.ccb.dianping.common.CommonError;
 import com.ccb.dianping.common.EnumCommonError;
 import com.ccb.dianping.common.Result;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +25,8 @@ public class CommonExceptionHandler {
             return Result.fail(new CommonError(EnumCommonError.PARAM_NOT_MATCH));
         } else if (ex instanceof NoHandlerFoundException) {
             return Result.fail(new CommonError(EnumCommonError.PATH_NOT_FOUND));
+        }else if(ex instanceof DuplicateKeyException){
+            return Result.fail(new CommonError(EnumCommonError.USER_ALREAD_EXIST));
         } else {
             return Result.fail(ex);
         }

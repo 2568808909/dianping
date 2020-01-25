@@ -6,7 +6,7 @@ public interface UserService {
 
     User getUser(Long id);
 
-    User register(User user);
+    void register(User user);
 
     User login(String telephone, String password);
 }
