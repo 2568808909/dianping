@@ -2,11 +2,9 @@ package com.ccb.dianping;
 
 import com.ccb.dianping.common.util.ReflectUtils;
 import com.ccb.dianping.model.bean.User;
-import com.ccb.dianping.model.vo.UserRegisterReq;
+import com.ccb.dianping.model.vo.user.UserRegisterReq;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Date;
 
 @SpringBootTest
 class DianpingApplicationTests {

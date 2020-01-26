@@ -1,6 +1,7 @@
 package com.ccb.dianping.dal;
 
 import com.ccb.dianping.model.bean.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     /**
@@ -50,4 +51,6 @@ public interface UserMapper {
      * @mbg.generated Sat Jan 25 15:08:27 CST 2020
      */
     int updateByPrimaryKey(User record);
+
+    User selectUserByPhoneAndPsw(@Param("telephone") String telephone, @Param("password") String password);
 }
