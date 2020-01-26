@@ -1,0 +1,9 @@
+笑了，你妈的，改变一下项目结构花了我一个多小时
+
+主要的坑是：
+
+1.子项目依赖父项目的jar包时父项目的依赖不能放入dependencyManagement中
+
+2.再有就是spring-boot-maven-plugin这个插件要求项目要创建一个SpringBoot启动类，不然install就一直报错
+
+3.最后一个有点莫名其妙，就是Mapper.xml中的resultType莫名其妙变了，导致一直启动说无法创建各种beans，改过来后，又莫名其妙说Mapper绑定的方法不存在。害得我一气之下，重新用mybatis-generator重新生成Mapper的所有文件，然后又可以了
