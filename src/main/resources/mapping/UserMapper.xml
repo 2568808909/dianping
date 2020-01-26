@@ -154,7 +154,7 @@
         gender = #{gender,jdbcType=INTEGER}
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <select id="selectUserByPhoneAndPsw" parameterType="String" resultType="com.ccb.dianping.model.bean.User">
+    <select id="selectUserByPhoneAndPsw" parameterType="String" resultType="User">
         select
         <include refid="Base_Column_List"/>
         from user where password=#{password} and telephone=#{telephone}

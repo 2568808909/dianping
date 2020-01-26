@@ -25,6 +25,10 @@ public class Result {
         return new Result(SUCCESS_CODE, data, SUCCESS_MSG);
     }
 
+    public static Result success() {
+        return new Result(SUCCESS_CODE, null, SUCCESS_MSG);
+    }
+
     public static Result success(Object data, String msg) {
         return new Result(SUCCESS_CODE, data, msg);
     }

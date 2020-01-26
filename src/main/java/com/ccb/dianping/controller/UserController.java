@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 @Controller
@@ -27,9 +27,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private final static String USER_ATRRIBUTE = "userInSession";
+    private final static String USER_ATTRIBUTE = "userInSession";
 
-    @RequestMapping("/get/{id}")
+    @RequestMapping("/index")
+    public ModelAndView index(){
+        String userName = "imooc";
+        ModelAndView modelAndView = new ModelAndView("/index.html");
+        modelAndView.addObject("name",userName);
+        return modelAndView;
+    }
+
+    @GetMapping("/get/{id}")
     @ResponseBody
     public Result getUser(@PathVariable Long id) {
         User user = userService.getUser(id);
@@ -59,18 +67,38 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/login")
+    @PostMapping("/login")
     @ResponseBody
-    public Result login(HttpServletRequest request, @Valid @RequestBody UserLoginReq userLoginReq) {
-        Object user = request.getSession().getAttribute(USER_ATRRIBUTE);
-        if (user != null) {
-            return Result.success(user);
+    public Result login(HttpServletRequest request,
+                        @Valid @RequestBody UserLoginReq userLoginReq,
+                        BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new BizException(CommonUtils.mergeErrorString(bindingResult));
         }
+        HttpSession session = request.getSession();
         try {
-            return Result.success(userService.login(userLoginReq.getTelephone(), userLoginReq.getPassword()));
+            User login = userService.login(userLoginReq.getTelephone(), userLoginReq.getPassword());
+            if (login == null) {
+                throw new BizException("密码或手机号不正确");
+            }
+            session.setAttribute(USER_ATTRIBUTE, login);
+            return Result.success(login);
         } catch (Exception e) {
             throw new BizException(e.getMessage());
         }
+    }
+
+    @GetMapping("/logout")
+    @ResponseBody
+    public Result logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return Result.success();
+    }
+
+    @GetMapping("/getCurrentUser")
+    @ResponseBody
+    public Result getCurrentUser(HttpServletRequest request) {
+        return Result.success(request.getSession().getAttribute(USER_ATTRIBUTE));
     }
 
 }
