@@ -1,7 +1,5 @@
 package com.ccb.dianping.common;
 
-import lombok.Data;
-
 public enum EnumCommonError {
 
     PARAM_NOT_MATCH(10001, "参数不正确"),

@@ -27,6 +27,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     private final static String USER_ATTRIBUTE = "userInSession";
 
     @RequestMapping("/index")

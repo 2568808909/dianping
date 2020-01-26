@@ -1,8 +1,8 @@
 package com.ccb.dianping.common.aspect;
 
 import com.ccb.dianping.common.CommonError;
-import com.ccb.dianping.common.EnumCommonError;
 import com.ccb.dianping.common.Result;
+import com.ccb.dianping.common.EnumCommonError;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
