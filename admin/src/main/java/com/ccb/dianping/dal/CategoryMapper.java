@@ -1,6 +1,10 @@
 package com.ccb.dianping.dal;
 
 import com.ccb.dianping.model.bean.Category;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 public interface CategoryMapper {
     /**
@@ -50,4 +54,11 @@ public interface CategoryMapper {
      * @mbg.generated Mon Jan 27 11:47:50 CST 2020
      */
     int updateByPrimaryKey(Category record);
+
+    @Select("select * from dianping_db.`category` order by sort DESC,id ASC limit #{pageStart},#{pageSize}")
+    List<Category> selectPage(@Param("pageStart") Integer pageStart
+            , @Param("pageSize") Integer pageSize);
+
+    @Select("select count(*) from dianping_db.`category`")
+    Long categoryCount();
 }

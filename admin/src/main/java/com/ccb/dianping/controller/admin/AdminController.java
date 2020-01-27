@@ -4,6 +4,9 @@ import com.ccb.dianping.common.BizException;
 import com.ccb.dianping.common.annotation.AdminPermission;
 import com.ccb.dianping.common.util.CommonUtils;
 import com.ccb.dianping.model.vo.admin.AdminLoginReq;
+import com.ccb.dianping.service.CategoryService;
+import com.ccb.dianping.service.SellerService;
+import com.ccb.dianping.service.ShopService;
 import com.ccb.dianping.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +29,15 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private ShopService shopService;
+
+    @Autowired
+    private SellerService sellerService;
+
     @Value("${admin.email}")
     private String email;
 
@@ -42,7 +54,10 @@ public class AdminController {
     @AdminPermission
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
-        modelAndView.addObject("userCount", userService.userCount());
+        modelAndView.addObject("userCount",userService.userCount());
+        modelAndView.addObject("shopCount",shopService.shopCount());
+        modelAndView.addObject("categoryCount",categoryService.categoryCount());
+        modelAndView.addObject("sellerCount",sellerService.sellerCount());
         modelAndView.addObject("CONTROLLER_NAME", "admin");
         modelAndView.addObject("ACTION_NAME", "index");
         return modelAndView;

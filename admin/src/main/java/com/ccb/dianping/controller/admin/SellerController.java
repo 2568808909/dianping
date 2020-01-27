@@ -6,10 +6,9 @@ import com.ccb.dianping.common.bean.PageResult;
 import com.ccb.dianping.common.bean.Result;
 import com.ccb.dianping.common.util.CommonUtils;
 import com.ccb.dianping.model.bean.Seller;
-import com.ccb.dianping.model.vo.SellerCreateReq;
-import com.ccb.dianping.model.vo.user.SellerPageReq;
+import com.ccb.dianping.model.vo.admin.SellerCreateReq;
+import com.ccb.dianping.model.vo.admin.SellerPageReq;
 import com.ccb.dianping.service.SellerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +51,8 @@ public class SellerController {
 
     @RequestMapping(value = "/create",method = RequestMethod.POST)
     @AdminPermission
-    public String create(@Valid SellerCreateReq sellerCreateReq, BindingResult bindingResult) {
+    public String create(@Valid SellerCreateReq sellerCreateReq,
+                         BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             throw new BizException(CommonUtils.mergeErrorString(bindingResult));
         }

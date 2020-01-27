@@ -1,9 +1,7 @@
 package dianping;
 
 import com.ccb.dianping.common.bean.PageResult;
-import com.ccb.dianping.common.bean.Result;
-import com.ccb.dianping.model.bean.Seller;
-import com.ccb.dianping.model.vo.user.SellerPageReq;
+import com.ccb.dianping.model.vo.admin.SellerPageReq;
 import com.ccb.dianping.service.SellerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.ccb.dianping.model.vo.user;
+package com.ccb.dianping.model.vo.admin;
 
 import lombok.Data;
 import lombok.ToString;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @ToString
-public class SellerPageReq {
+public class PageReq {
 
     @NotNull(message = "page不能为空")
     @Min(message = "页码最小为1", value = 1)

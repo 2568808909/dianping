@@ -1,6 +1,9 @@
 package com.ccb.dianping.dal;
 
 import com.ccb.dianping.model.bean.Shop;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 
 public interface ShopMapper {
@@ -51,4 +54,10 @@ public interface ShopMapper {
      * @mbg.generated Mon Jan 27 11:47:50 CST 2020
      */
     int updateByPrimaryKey(Shop record);
+
+    @Select("select count(*) from dianping_db.`shop`")
+    Long shopCount();
+
+    @Select("select * from dianping_db.`shop` limit #{pageStart},#{pageSize}")
+    List<Shop> selectPage(Integer pageStart, Integer pageSize);
 }

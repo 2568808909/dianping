@@ -1,4 +1,4 @@
-package com.ccb.dianping.model.vo;
+package com.ccb.dianping.model.vo.admin;
 
 import lombok.Data;
 

@@ -5,13 +5,13 @@ import com.ccb.dianping.common.bean.PageInfo;
 import com.ccb.dianping.common.bean.PageResult;
 import com.ccb.dianping.dal.SellerMapper;
 import com.ccb.dianping.model.bean.Seller;
-import com.ccb.dianping.model.vo.user.SellerPageReq;
+import com.ccb.dianping.model.vo.admin.SellerPageReq;
 import com.ccb.dianping.service.SellerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class SellerServiceImpl implements SellerService {
     @Override
     public PageResult querySellerPage(SellerPageReq sellerPageReq) {
         PageInfo pageInfo = new PageInfo();
-        Long totalCount = sellerMapper.sellerCount();
+        Long totalCount = sellerCount();
         Integer page = sellerPageReq.getPage();
         Integer size = sellerPageReq.getSize();
         Integer pageStart = (page - 1) * size;
@@ -67,6 +67,7 @@ public class SellerServiceImpl implements SellerService {
 
     @Override
     @CacheEvict(cacheNames = "seller_count")
+    @Transactional
     public Seller create(Seller seller) {
         Date now = new Date();
         seller.setCreatedTime(now);
