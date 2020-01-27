@@ -1,12 +1,11 @@
 package com.ccb.dianping.common.aspect;
 
 import com.ccb.dianping.common.CommonError;
-import com.ccb.dianping.common.Result;
+import com.ccb.dianping.common.bean.Result;
 import com.ccb.dianping.common.EnumCommonError;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;

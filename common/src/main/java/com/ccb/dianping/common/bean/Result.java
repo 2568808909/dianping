@@ -1,13 +1,14 @@
-package com.ccb.dianping.common;
+package com.ccb.dianping.common.bean;
 
+import com.ccb.dianping.common.CommonError;
 import lombok.Data;
 
 @Data
 public class Result {
 
-    private static int SUCCESS_CODE = 0;
-    private static String SUCCESS_MSG = "success";
-    private static int BIZ_FAIL_CODE = 1;
+    protected static int SUCCESS_CODE = 0;
+    protected static String SUCCESS_MSG = "success";
+    protected static int BIZ_FAIL_CODE = 1;
 
     private int code;
 

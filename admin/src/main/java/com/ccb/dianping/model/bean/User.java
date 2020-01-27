@@ -1,7 +1,10 @@
 package com.ccb.dianping.model.bean;
 
+import lombok.ToString;
+
 import java.util.Date;
 
+@ToString
 public class User {
     /**
      *

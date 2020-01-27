@@ -1,7 +1,7 @@
 package com.ccb.dianping.controller;
 
 import com.ccb.dianping.common.BizException;
-import com.ccb.dianping.common.Result;
+import com.ccb.dianping.common.bean.Result;
 import com.ccb.dianping.common.util.CommonUtils;
 import com.ccb.dianping.common.util.ReflectUtils;
 import com.ccb.dianping.model.bean.User;
