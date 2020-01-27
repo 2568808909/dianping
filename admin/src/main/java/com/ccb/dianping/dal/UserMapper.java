@@ -1,6 +1,7 @@
 package com.ccb.dianping.dal;
 
 import com.ccb.dianping.model.bean.User;
+import org.apache.ibatis.annotations.Select;
 
 public interface UserMapper {
     /**
@@ -52,4 +53,7 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User selectUserByPhoneAndPsw(String telephone, String password);
+
+    @Select("select count(*) from dianping_db.`user`")
+    Integer userCount();
 }

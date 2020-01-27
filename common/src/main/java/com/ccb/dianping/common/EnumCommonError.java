@@ -6,7 +6,7 @@ public enum EnumCommonError {
     PATH_NOT_FOUND(10002, "找不到路径"),
 
     //用户相关错误
-    USER_ALREAD_EXIST(20001, "该手机号已注册");
+    USER_ALREADY_EXIST(20001, "该手机号已注册");
 
     private int code;
 

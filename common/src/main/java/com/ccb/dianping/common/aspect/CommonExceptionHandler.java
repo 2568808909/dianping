@@ -6,6 +6,7 @@ import com.ccb.dianping.common.EnumCommonError;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -26,7 +27,7 @@ public class CommonExceptionHandler {
         } else if (ex instanceof NoHandlerFoundException) {
             return Result.fail(new CommonError(EnumCommonError.PATH_NOT_FOUND));
         }else if(ex instanceof DuplicateKeyException){
-            return Result.fail(new CommonError(EnumCommonError.USER_ALREAD_EXIST));
+            return Result.fail(new CommonError(EnumCommonError.USER_ALREADY_EXIST));
         } else {
             return Result.fail(ex);
         }

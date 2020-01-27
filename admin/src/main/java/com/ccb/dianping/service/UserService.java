@@ -11,4 +11,6 @@ public interface UserService {
     void register(User user) throws NoSuchAlgorithmException;
 
     User login(String telephone, String password) throws NoSuchAlgorithmException;
+
+    Integer userCount();
 }

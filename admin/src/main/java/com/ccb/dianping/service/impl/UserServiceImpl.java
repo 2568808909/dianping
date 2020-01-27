@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
         password = CommonUtils.MD5(password);
         return userMapper.selectUserByPhoneAndPsw(telephone,password);
     }
+
+    @Override
+    public Integer userCount() {
+        return userMapper.userCount();
+    }
 }

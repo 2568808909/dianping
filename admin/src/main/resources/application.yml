@@ -23,6 +23,9 @@ spring:
     #请求路径没有命中时抛出异常
     throw-exception-if-no-handler-found: true
   thymeleaf:
-    prefix: /templates/
+    prefix: classpath:/templates/
     suffix: .html
+admin:
+    email: 2568808909@qq.com
+    encryptPassword: 4QrcOUm6Wau+VuBX8g+IPg==
 
