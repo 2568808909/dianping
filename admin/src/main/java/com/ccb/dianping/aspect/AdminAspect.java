@@ -27,8 +27,11 @@ public class AdminAspect {
     @Autowired
     private HttpServletResponse response;
 
-    @Around("execution(* com.ccb.dianping.controller.admin.*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
-    public Object adminControllerBeforeValidation( ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("execution(* com.ccb.dianping.controller.admin.*.*(..)) " +
+            "&& (@annotation(org.springframework.web.bind.annotation.RequestMapping) " +
+            "|| @annotation(org.springframework.web.bind.annotation.GetMapping) " +
+            "|| @annotation(org.springframework.web.bind.annotation.PostMapping)))")
+    public Object adminControllerBeforeValidation(ProceedingJoinPoint joinPoint) throws Throwable {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         AdminPermission adminPermission = method.getAnnotation(AdminPermission.class);
         if (adminPermission == null) {

@@ -37,7 +37,7 @@ public class AdminController {
      *
      * @return
      */
-    @GetMapping("/index")
+    @RequestMapping("/index")
     @ResponseBody
     @AdminPermission
     public ModelAndView index() {
